@@ -29,7 +29,7 @@ public class Contact {
     }
 
     @Ignore
-    Contact( String name, String number, String numType){
+    Contact(String name, String number, String numType){
         this.name =name;
         this.number = number;
         this.numType = numType;

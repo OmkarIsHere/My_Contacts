@@ -85,9 +85,10 @@ public class AddContact extends AppCompatActivity {
                         for(int i=0; i<arrContact.size(); i++){
                             Log.d(TAG, "Name: "+ arrContact.get(i).getName()+ "No: "+ arrContact.get(i).getNumber() + " " + arrContact.get(i).getNumType());
                         }
-                        
+
                     }
                 }
+                finish();
             }
         });
 
