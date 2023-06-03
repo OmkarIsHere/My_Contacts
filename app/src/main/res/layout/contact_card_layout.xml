@@ -10,8 +10,9 @@
     android:layout_marginTop="@dimen/_5sdp"
     android:background="@drawable/bg_card">
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:orientation="horizontal"
+        android:gravity="center"
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/contactImg"
@@ -25,34 +26,36 @@
             android:textColor="#009688"
             android:gravity="center"
             android:textSize="@dimen/_19ssp"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="center"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/contactName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
                 android:text="@string/ContactName"
                 android:textColor="@color/black"
-                android:gravity="start|center_vertical"
-                android:textSize="@dimen/_16ssp"/>
+                android:textSize="@dimen/_16ssp" />
+
             <TextView
                 android:id="@+id/numType"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/NumType"
                 android:gravity="start"
-                android:textSize="@dimen/_12ssp"/>
-
+                android:text="@string/NumType"
+                android:textSize="@dimen/_12ssp" />
         </LinearLayout>
         <TextView
             android:id="@+id/contactId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/NumType"
-            android:visibility="invisible"
+            android:visibility="gone"
             android:gravity="center|top"
             android:textSize="@dimen/_10ssp"/>
     </LinearLayout>

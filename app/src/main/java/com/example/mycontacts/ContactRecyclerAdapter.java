@@ -1,6 +1,7 @@
 package com.example.mycontacts;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,16 +37,18 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<ContactRecycler
         String id = String.valueOf(arrList.get(position).cId);
         holder.contactId.setText(id);
 
-        String s = (arrList.get(position).cName);
+        String s = (arrList.get(position).cName).replaceFirst("^ *", "");
         if(s.length() > 2 && s.contains(" ")){
             holder.contactImg.setText(s.replaceAll("^\\s*([a-zA-Z]).*\\s+([a-zA-Z])\\S+$", "$1$2"));
+            Log.d(TAG, "first if: "+ s.length() + " "+s);
         }else if(s.length() > 2 && !s.contains(" ")){
             holder.contactImg.setText(s.substring(0,1));
         }else{
             holder.contactImg.setText(s);
         }
 
-        s = s.replaceFirst("^ *", "");
+
+
         if(s.length()>=29){
           String firstHalf = s.substring(0,28);
           String fullString = firstHalf + "...";
@@ -53,8 +56,25 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<ContactRecycler
         }else{
         holder.contactName.setText(s);
         }
-        holder.numType.setText(arrList.get(position).numType);
-        Log.d(TAG, "onBindViewHolder: " + arrList.get(position).cId + s );
+        String numType =(arrList.get(position).numType);
+        String cNumber = (arrList.get(position).cNumber);
+        String joined =  numType+ ": " + cNumber;
+        holder.numType.setText(joined);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: itemView");
+                String temp = holder.contactImg.getText().toString();
+                Intent i = new Intent(context, ContactDetailsActivity.class);
+                i.putExtra("id", id);
+                i.putExtra("img", temp);
+                i.putExtra("name", s);
+                i.putExtra("number",cNumber);
+                i.putExtra("numType",numType);
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override

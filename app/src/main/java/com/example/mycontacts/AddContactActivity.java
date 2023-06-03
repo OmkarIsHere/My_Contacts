@@ -2,6 +2,7 @@ package com.example.mycontacts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,7 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class AddContact extends AppCompatActivity {
+public class AddContactActivity extends AppCompatActivity {
     private static final String TAG = "AddContact";
     private EditText cName , cNo;
     ImageView closeBtn;
@@ -89,6 +90,8 @@ public class AddContact extends AppCompatActivity {
                     }
                 }
                 finish();
+                Intent refresh = new Intent(AddContactActivity.this, MainActivity.class);
+                startActivity(refresh);
             }
         });
 
