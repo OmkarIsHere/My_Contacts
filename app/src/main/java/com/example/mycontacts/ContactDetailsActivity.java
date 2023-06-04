@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -53,22 +55,33 @@ public class ContactDetailsActivity extends AppCompatActivity {
             editPref.apply();
         }
 
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
+
+
+        backBtn.setOnClickListener(v -> {
+            finish();
+            Intent refresh = new Intent(ContactDetailsActivity.this, MainActivity.class);
+            startActivity(refresh);
         });
 
-        editBtn.setOnClickListener(new View.OnClickListener() {
+        editBtn.setOnClickListener(v -> {
+            if (SystemClock.elapsedRealtime() - lastClick < 2000){  //For single Click
+                return;
+            }
+            lastClick = SystemClock.elapsedRealtime();
+            EditContactFragment editContactFragment = new EditContactFragment();
+            editContactFragment.show(getSupportFragmentManager(), editContactFragment.getTag());
+        });
+
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - lastClick < 2000){  //For single Click
-                    return;
-                }
-                lastClick = SystemClock.elapsedRealtime();
-                EditContactFragment editContactFragment = new EditContactFragment();
-                editContactFragment.show(getSupportFragmentManager(), editContactFragment.getTag());
+                int cId = Integer.parseInt(id);
+                DBhelper dBhelper = DBhelper.getDB(getApplicationContext());
+                dBhelper.contactDao().deleteContact(cId);
+                Toast.makeText(getApplicationContext(), "Delete", Toast.LENGTH_SHORT).show();
+                finish();
+                Intent refresh = new Intent(ContactDetailsActivity.this, MainActivity.class);
+                startActivity(refresh);
             }
         });
 

@@ -28,8 +28,8 @@ public interface ContactDao {
     @Update
     void updateContact(Contact contact);
 
-    @Delete
-    void deleteContact(Contact contact);
+    @Query("delete from contacts where id=:id ")
+    void deleteContact(int id);
 
 
 

@@ -2,6 +2,7 @@ package com.example.mycontacts;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -107,6 +108,8 @@ public class EditContactFragment extends BottomSheetDialogFragment {
                 Toast.makeText(getActivity(), "Please refresh the page", Toast.LENGTH_SHORT).show();
             }
         });
+
+
 
         return view;
     }
