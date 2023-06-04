@@ -65,6 +65,8 @@ public class AddContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                Intent refresh = new Intent(AddContactActivity.this, MainActivity.class);
+                startActivity(refresh);
             }
         });
 
@@ -80,8 +82,7 @@ public class AddContactActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "All fields are required", Toast.LENGTH_SHORT).show();
                     } else{
                         dbHelper.contactDao().addContact(
-                                new Contact(contactName, contactNo, numberType)
-                        );
+                                new Contact(contactName, contactNo, numberType));
                         ArrayList<Contact> arrContact= (ArrayList<Contact>)dbHelper.contactDao().getAllContact();
                         for(int i=0; i<arrContact.size(); i++){
                             Log.d(TAG, "Name: "+ arrContact.get(i).getName()+ "No: "+ arrContact.get(i).getNumber() + " " + arrContact.get(i).getNumType());

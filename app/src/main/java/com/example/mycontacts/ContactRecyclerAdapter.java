@@ -64,15 +64,16 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<ContactRecycler
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: itemView");
                 String temp = holder.contactImg.getText().toString();
-                Intent i = new Intent(context, ContactDetailsActivity.class);
+                Intent i = new Intent(context.getApplicationContext(), ContactDetailsActivity.class);
                 i.putExtra("id", id);
                 i.putExtra("img", temp);
                 i.putExtra("name", s);
                 i.putExtra("number",cNumber);
                 i.putExtra("numType",numType);
-                context.startActivity(i);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                context.getApplicationContext().startActivity(i);
+                Log.d(TAG, "id "+ id + " "+ temp +" "+ s + " " +cNumber +" "+ numType);
             }
         });
     }

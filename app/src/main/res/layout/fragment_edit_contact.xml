@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/bottomSheet"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottom_sheet"
+    tools:context=".EditContactFragment">
+
+    <View
+        android:layout_width="@dimen/_30sdp"
+        android:layout_gravity="center"
+        android:layout_height="@dimen/_5sdp"
+        android:background="@color/grey"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_20sdp"/>
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_14ssp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/account"
+        android:drawablePadding="@dimen/_10sdp"
+        android:hint="@string/hint_full_name"
+        android:padding="@dimen/_7sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:inputType="textCapSentences" />
+    <EditText
+        android:id="@+id/editTextPhoneNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_14ssp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/phone"
+        android:drawablePadding="@dimen/_10sdp"
+        android:hint="@string/hint_phone_no"
+        android:padding="@dimen/_7sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:inputType="phone" />
+    <Spinner
+        android:id="@+id/noTypeSpinner"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:textAlignment="center"
+        android:padding="@dimen/_7sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_50sdp"
+        android:background="@drawable/custom_input"/>
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save_edit"
+        android:gravity="center"
+        android:backgroundTint="@color/primary"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:textSize="@dimen/_14ssp"/>
+</LinearLayout>

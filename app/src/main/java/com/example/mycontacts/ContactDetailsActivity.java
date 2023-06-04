@@ -1,17 +1,26 @@
 package com.example.mycontacts;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class ContactDetailsActivity extends AppCompatActivity {
 
     private static final String TAG = "ContactDetailsActivity";
 
+    long lastClick;
     String id, cName , cNumber, numType, cImg;
     ImageButton backBtn, editBtn, deleteBtn;
     TextView txtName, txtNumber, contactImg;
@@ -33,16 +42,33 @@ public class ContactDetailsActivity extends AppCompatActivity {
             cName = getIntent().getStringExtra("name");
             cNumber = getIntent().getStringExtra("number");
             numType = getIntent().getStringExtra("numType");
-            Log.d(TAG, "onCreate: "+ cName + " " + cImg);
+
             txtName.setText(cName);
             txtNumber.setText(cNumber);
             contactImg.setText(cImg);
+
+            SharedPreferences contactDetailsPref = getApplicationContext().getSharedPreferences("contactDetails", MODE_PRIVATE);
+            SharedPreferences.Editor editPref = contactDetailsPref.edit();
+            editPref.putString("id", id);
+            editPref.apply();
         }
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - lastClick < 2000){  //For single Click
+                    return;
+                }
+                lastClick = SystemClock.elapsedRealtime();
+                EditContactFragment editContactFragment = new EditContactFragment();
+                editContactFragment.show(getSupportFragmentManager(), editContactFragment.getTag());
             }
         });
 

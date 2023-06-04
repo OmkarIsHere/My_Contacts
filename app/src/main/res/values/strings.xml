@@ -13,4 +13,5 @@
     <string name="close">close</string>
     <string name="edit">edit</string>
     <string name="delete">delete</string>
+    <string name="save_edit">Save Edit</string>
 </resources>

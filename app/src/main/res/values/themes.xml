@@ -3,6 +3,14 @@
     <style name="Base.Theme.MyContacts" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogueTheme</item>
+    </style>
+
+    <style name="BottomSheetDialogueTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet</item>
     </style>
 
     <style name="Theme.MyContacts" parent="Base.Theme.MyContacts" />
