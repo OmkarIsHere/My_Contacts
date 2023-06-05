@@ -73,7 +73,7 @@ public class AddContactActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                contactName = cName.getText().toString();
+                contactName = cName.getText().toString().trim();
                 contactNo = cNo.getText().toString();
                 Log.d(TAG, "onClick: "+ contactName);
                 Log.d(TAG, "onClick: "+ contactNo);

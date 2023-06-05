@@ -98,7 +98,7 @@ public class EditContactFragment extends BottomSheetDialogFragment {
         });
 
         btnSave.setOnClickListener(v -> {
-            name = cName.getText().toString();
+            name = cName.getText().toString().trim();
             num = cNo.getText().toString();
             dbHelper.contactDao().updateContactById(name,num, numType, cId);
             Log.d(TAG, "onClick btn save: ");

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start|center_vertical"
-        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:text="@string/confirm_delete"
         android:textColor="@color/black"
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start|center_vertical"
-        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_15sdp"
         android:text="@string/are_you_sure_you_want_to_delete_this_contact"
         android:textSize="@dimen/_12ssp" />
     <View

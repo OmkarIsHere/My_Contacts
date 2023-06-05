@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
@@ -25,7 +26,7 @@ public class ContactDetailsActivity extends AppCompatActivity {
     private static final String TAG = "ContactDetailsActivity";
 
     long lastClick;
-    String id, cName , cNumber, numType, cImg;
+    String id, cName , cNumber, numType, cImg, hexColor;
     ImageButton backBtn, editBtn, deleteBtn;
     TextView txtName, txtNumber, contactImg;
     @Override
@@ -46,10 +47,16 @@ public class ContactDetailsActivity extends AppCompatActivity {
             cName = getIntent().getStringExtra("name");
             cNumber = getIntent().getStringExtra("number");
             numType = getIntent().getStringExtra("numType");
+            hexColor = getIntent().getStringExtra("hexColor");
 
             txtName.setText(cName);
             txtNumber.setText(cNumber);
             contactImg.setText(cImg);
+            try {
+                contactImg.setBackgroundColor(Color.parseColor(hexColor));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
             SharedPreferences contactDetailsPref = getApplicationContext().getSharedPreferences("contactDetails", MODE_PRIVATE);
             SharedPreferences.Editor editPref = contactDetailsPref.edit();
