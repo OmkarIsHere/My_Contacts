@@ -5,4 +5,7 @@
     <color name="primary">#FF4CB1FF</color>
     <color name="dimgrey">#EEEEEE</color>
     <color name="grey">#969696</color>
+    <color name="dull_white">#F9F9F9</color>
+    <color name="light_blue">#BBDEFB</color>
+    <color name="fade_blue">#B3E5FC</color>
 </resources>

@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface ContactDao {
     String id = "0";
-    @Query("select * from contacts")
+    @Query("select * from contacts order by name asc")
     List<Contact> getAllContact();
 
     @Query("select * from contacts where id = :id")

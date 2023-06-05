@@ -97,16 +97,13 @@ public class EditContactFragment extends BottomSheetDialogFragment {
             }
         });
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                name = cName.getText().toString();
-                num = cNo.getText().toString();
-                dbHelper.contactDao().updateContactById(name,num, numType, cId);
-                Log.d(TAG, "onClick btn save: ");
-                dismiss();
-                Toast.makeText(getActivity(), "Please refresh the page", Toast.LENGTH_SHORT).show();
-            }
+        btnSave.setOnClickListener(v -> {
+            name = cName.getText().toString();
+            num = cNo.getText().toString();
+            dbHelper.contactDao().updateContactById(name,num, numType, cId);
+            Log.d(TAG, "onClick btn save: ");
+            dismiss();
+            Toast.makeText(getActivity(), "Please refresh the page", Toast.LENGTH_SHORT).show();
         });
 
 

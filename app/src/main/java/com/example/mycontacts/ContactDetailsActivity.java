@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -75,13 +77,26 @@ public class ContactDetailsActivity extends AppCompatActivity {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int cId = Integer.parseInt(id);
-                DBhelper dBhelper = DBhelper.getDB(getApplicationContext());
-                dBhelper.contactDao().deleteContact(cId);
-                Toast.makeText(getApplicationContext(), "Delete", Toast.LENGTH_SHORT).show();
-                finish();
-                Intent refresh = new Intent(ContactDetailsActivity.this, MainActivity.class);
-                startActivity(refresh);
+
+                Dialog  dialog = new Dialog(ContactDetailsActivity.this);
+                dialog.setContentView(R.layout.alert_dialog);
+                dialog.setCancelable(false);
+                dialog.show();
+
+                Button btnCancel = (Button)dialog.findViewById(R.id.btnCancel);
+                Button btnDelete = (Button)dialog.findViewById(R.id.btnDelete);
+
+                btnCancel.setOnClickListener(v1 -> dialog.dismiss());
+
+                btnDelete.setOnClickListener(v12 -> {
+                    int cId = Integer.parseInt(id);
+                    DBhelper dBhelper = DBhelper.getDB(getApplicationContext());
+                    dBhelper.contactDao().deleteContact(cId);
+                    Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
+                    finish();
+                    Intent refresh = new Intent(ContactDetailsActivity.this, MainActivity.class);
+                    startActivity(refresh);
+                });
             }
         });
 
