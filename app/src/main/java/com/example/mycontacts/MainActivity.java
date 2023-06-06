@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         setData();
-
     }
+    
     public void setData(){
         DBhelper dbHelper = DBhelper.getDB(this);
         arrContact =(ArrayList<Contact>)dbHelper.contactDao().getAllContact();
